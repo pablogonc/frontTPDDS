@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registrar Mascota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <link rel="stylesheet" href="../static/Registrar_Mascota/Registrar_Mascota.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+    <header>
+        <main-menu-usuario></main-menu-usuario>
+        <div class="contenedor-base">
+            <div class="contenedor-texto-header">
+                <h1 class="titulo-principal">Registrar a mi mascota</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="main" id="app">
+        <section class="acerca-de">
+            <div class="contenedor-base">
+
+                <div class="texto">
+                    <h3 class="sub-titulo">¿Cómo Registro a Mi Mascota?</h3>
+                    <p class="texto-simple">Para registrar a tu mascota sólo necesitarás completar un breve formulario con tus datos personales y algunos datos de tu mascota. Luego, recibirás un collar con una chapita que contiene un código QR impreso para que cualquier persona pueda escanearlo y comunicarse contigo en caso de que tu mascota se pierda.</p>
+                </div>
+
+                <div class="imagenes-instructivas">
+                    <div class="img-instructiva">
+                        <img src="../static/Registrar_Mascota/img/collar.jpg" width="150" alt="Chapita con código QR impreso">
+                    </div>
+                    <div class="img-instructiva">
+                        <img src="../static/Registrar_Mascota/img/scan_qr.PNG"  width="150" alt="Celular escaneando código QR">
+                    </div>
+                    <div class="img-instructiva">
+                        <img src="../static/Registrar_Mascota/img/notif.png" width="150" alt="Notificación dando aviso al dueño">
+                    </div>
+                </div>
+
+
+        </section>
+
+        <button @click="redirect" class="botonAzul boton" v-show="!unlocked">Comenzar</button>
+
+        <div class="aviso-usuario contenedor-base" v-show="unlocked">
+            <div class="contenedor-error">
+                <img src="../static/Registrar_Mascota/img/usuario.png" alt="usuario" width="100">
+                <h3 class="sub-titulo">Parece que no tienes usuario</h3>
+                <p class="texto-simple">Hemos notado que aún no has iniciado sesión o no te has registrado. No hay problema, puedes continuar sin usuario o puedes crear uno rápidamente.</p>
+                <div class="botones">
+                    <button @click="goToRegistrarse" class="botonGris">Registrarme</button>
+                    <button @click="goToRegistrarMascota" class="botonAzul">Continuar sin usuario</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <main-footer></main-footer>
+
+    <script src="../static/Footer/Footer.js"></script>
+    <script src="../static/Menu/Menu.js"></script>
+    <script src="../static/Resources/ValidarUsuario.js"></script>
+    <script src="../static/Registrar_Mascota/Registrar_Mascota.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Mascota Perdida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Datos_Mascota_Perdida/Datos_Mascota_Perdida.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <link rel="stylesheet" href="../static/Formulario_Registrar_Mascota/Formulario_Registrar_Mascota.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+    <main-menu-usuario></main-menu-usuario>
+
+    <section class="main">
+        <div class="contenedor-base">
+
+            <!-- MASCOTA -->
+
+            <br><br><br>
+
+            <h3 class="sub-titulo">Datos de la Mascota</h3>
+
+            <div class="input">
+                <p class="texto-simple pregunta">Seleccione la ubicación en donde la encontró</p>
+            </div>
+
+            <div id="map"></div> <!-- En este div se inserta el mapa -->
+
+            <form method="post">
+                <div class="lat_long">
+                    <p class="texto-simple pregunta">Latitud</p>
+                    <input type="text" class="texto-simple input_lat_long" id="lat" readonly="yes"><br>
+                </div>
+                <div class="lat_long">
+                    <p class="texto-simple pregunta">Longitud</p>
+                    <input type="text" class="texto-simple input_lat_long" id="lng" readonly="yes">
+                </div>
+            </form>
+
+            <br><br>
+
+            <section class="formulario" id="app">
+
+                <div class="">
+                    <p class="texto-simple pregunta">Describa el estado en el cual la encontró</p>
+                    <p><textarea name="mensaje" v-model="publicacion.mascota.estado"></textarea></p>
+                </div>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta titulo-inline">Tipo</p>
+                    <div class="opciones-inline">
+                        <input type="radio" id="Gato" value="GATO" v-model="publicacion.mascota.tipo">
+                        <label class="texto-simple option" for="Gato">Gato</label><br>
+                        <input type="radio" id="Perro" value="PERRO" v-model="publicacion.mascota.tipo">
+                        <label class="texto-simple option" for="Perro">Perro</label><br>
+                    </div>
+                </div>
+
+                <div class="">
+                    <br>
+                    <p class="texto-simple pregunta">Adjunte fotos de la mascota</p>
+                    <br>
+                    <input type="file" accept="image/png, image/jpeg" @change="subirFotos($event)" multiple>
+                </div>
+
+                <div v-if="publicacion.mascota.errorsMascota.length">
+                    <div class="tarjeta-error">
+                        <img src="../static/Crear_Publicacion/img/error.png" alt="Error" height="100">
+                        <b class="texto-error">¡Atención! Tu mascota tiene datos incorrectos:</b>
+                        <br>
+                        <br>
+                        <ul>
+                            <li v-for="error in publicacion.mascota.errorsMascota" class="texto-simple">{{ error }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RESCATISTA -->
+
+                <h3 class="sub-titulo">Datos Personales</h3>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta">Nombre</p>
+                    <input type="text" class="input-completo texto-simple" v-model="publicacion.mascota.rescatista.nombre" required>
+                </div>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta">Apellido</p>
+                    <input type="text" class="input-completo" v-model="publicacion.mascota.rescatista.apellido" required>
+                </div>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta">Teléfono</p>
+                    <input type="text" class="input-completo" v-model="publicacion.mascota.rescatista.telefono" required>
+                </div>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta">Email</p>
+                    <input type="text" class="input-completo" v-model="publicacion.mascota.rescatista.email" required>
+                </div>
+
+                <div class="input misma-linea">
+                    <p class="texto-simple pregunta">Número de documento</p>
+                    <input type="number" class="input-completo" v-model="publicacion.mascota.rescatista.nroDocumento" required>
+                </div>
+
+                <div class="input misma-linea">
+                    <label class="texto-simple">Tipo de documento</label>
+                    <select class="texto-simple tipoDoc pregunta" v-model="publicacion.mascota.rescatista.tipoDocumento" required>
+                        <option>DNI</option>
+                        <option>PASAPORTE</option>
+                        <option>CUIT</option>
+                        <option>CUIL</option>
+                    </select>
+                </div>
+
+                <div class="input">
+                    <p class="texto-simple pregunta">Domicilio</p>
+                    <input type="text" class="input-completo" v-model="publicacion.mascota.rescatista.domicilio" required>
+                </div>
+
+                <div class="input">
+                    <p class="texto-simple pregunta titulo-inline">Quiero ser notificado por</p>
+                    <div class="opciones-inline">
+                        <p class="texto-simple"><input type="checkbox" v-model="publicacion.mascota.rescatista.formasNotificacion1" value="WPP">  WhatsApp</p>
+                        <p class="texto-simple"><input type="checkbox" v-model="publicacion.mascota.rescatista.formasNotificacion1" value="SMS">  SMS</p>
+                        <p class="texto-simple"><input type="checkbox" v-model="publicacion.mascota.rescatista.formasNotificacion1" value="EMAIL">  EMAIL</p>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <p class="texto-simple pregunta fecha-inline">Fecha de nacimiento</p>
+                    <input type="date" class="fecha texto-simple pregunta" v-model="publicacion.mascota.rescatista.fechaDeNacimiento" required>
+                </div>
+
+                <div v-if="publicacion.mascota.rescatista.errorsRescatista.length">
+                    <div class="tarjeta-error">
+                        <img src="../static/Crear_Publicacion/img/error.png" alt="Error" height="100">
+                        <b class="texto-error">¡Atención! Tienes datos personales incorrectos:</b>
+                        <br>
+                        <br>
+                        <ul>
+                            <li v-for="error in publicacion.mascota.rescatista.errorsRescatista" class="texto-simple">{{ error }}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CONTACTOS -->
+
+                <div> <!-- Este div tiene que estar encerrando al for porque sino la :key interfiere con la key de la seccion de abajo-->
+                    <h3 class="sub-titulo contactos">Mis Contactos</h3>
+                    <div v-for="(contacto, counter) in publicacion.mascota.rescatista.otrosContactos" :key="counter" class="nuevo-cuadro">
+
+                        <h2 class="texto-simple contacto-numero">Contacto #{{counter+1}}</h2>
+                        <span @click="deleteContacto(counter)">Eliminar</span>
+
+                        <br>
+
+                        <div class="input misma-linea">
+                            <p class="texto-simple pregunta">Nombre</p>
+                            <input type="text" class="input-completo" v-model="contacto.nombre" required>
+                        </div>
+
+                        <div class="input misma-linea">
+                            <p class="texto-simple pregunta">Apellido</p>
+                            <input type="text" class="input-completo" v-model="contacto.apellido" required>
+                        </div>
+
+                        <div class="input misma-linea">
+                            <p class="texto-simple pregunta">Teléfono</p>
+                            <input type="text" class="input-completo" v-model="contacto.telefono" required>
+                        </div>
+
+                        <div class="input misma-linea">
+                            <p class="texto-simple pregunta">Email</p>
+                            <input type="text" class="input-completo" v-model="contacto.email" required>
+                        </div>
+
+                        <div class="input">
+                            <p class="texto-simple pregunta titulo-inline">Quiere ser notificado por</p>
+                            <div class="opciones-inline">
+                                <p class="texto-simple"><input type="checkbox" v-model="contacto.formasNotificacion1" value="WPP">  WhatsApp</p>
+                                <p class="texto-simple"><input type="checkbox" v-model="contacto.formasNotificacion1" value="SMS">  SMS</p>
+                                <p class="texto-simple"><input type="checkbox" v-model="contacto.formasNotificacion1" value="EMAIL">  EMAIL</p>
+                            </div>
+                        </div>
+
+                        <div v-if="contacto.errorsContacto.length">
+                            <div class="tarjeta-error">
+                                <img src="../static/Crear_Publicacion/img/error.png" alt="Error" height="100">
+                                <b class="texto-error">¡Atención! Tu contacto tiene datos incorrectos:</b>
+                                <br>
+                                <br>
+                                <ul>
+                                    <li v-for="error in contacto.errorsContacto" class="texto-simple">{{ error }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="botonGris gris" @click="addContacto">+ Agregar más contactos</button>
+                </div>
+
+                <button @click="enviar" class="botonAzul boton">Finalizar</button>
+
+            </section>
+        </div>
+    </section>
+
+    <main-footer></main-footer>
+
+    <script src="../static/Footer/Footer.js"></script>
+    <script src="../static/Menu/Menu.js"></script>
+    <script src="../static/Resources/ValidarUsuario.js"></script>
+    <script src="../static/Datos_Mascota_Perdida/Datos_Mascota_Perdida.js"></script>
+    <script src="../static/Datos_Mascota_Perdida/map.js"></script>
+
+</body>
+</html>

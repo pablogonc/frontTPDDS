@@ -1,0 +1,21 @@
+header {
+    background: url("img/header.png");
+    height: 550px;
+    background-size: cover;
+}
+
+.contenedor-texto-header {
+  justify-content: right;
+  margin-top: 200px;
+  max-width: 30%;
+  float: right;
+}
+
+.titulo-principal {
+  color: #331A00;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 55px;
+  margin: 0;
+  text-align: right;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Mascota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Seleccionar_Mascota/Seleccionar_Mascota.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <link rel="stylesheet" href="../static/Resources/Formulario.css">
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+
+<body>
+
+<main-menu-usuario></main-menu-usuario>
+
+<section class="main">
+    <div class="contenedor-base" id="app">
+        <br><br><br>
+        <h3 class="sub-titulo">Mascota a dar en adopción</h3>
+
+        <div class="contenedor-descripcion">
+            <div class="img-instructiva">
+                <img src="../static/Seleccionar_Mascota/img/form.png" width="100" alt="Form">
+            </div>
+            <div class="instruccion texto-simple">
+                <p>Seleccioná la mascota que desees dar en adopción</p>
+            </div>
+        </div>
+
+        <div class="contenedor-mascotas">
+
+            <div v-for="(mascota, counter) in usuarioEstandar.duenioAsociado.mascotas" :key="mascota.id" class="contenedor-mascota">
+
+                <div class="contenedor-datos-mascota">
+
+                    <div class="informacion-mascota">
+                        <p class="nombre-mascota texto-mascota">{{mascota.apodo}}</p>
+                    </div>
+
+                    <div class="carrousel-fotos-mascota" class="informacion-mascota">
+
+                        <a v-on:click="anteriorFoto(counter, mascota.fotos)" class="arrow"><img src="../static/Seleccionar_Mascota/img/left-arrow.png" width="50"/></a>
+
+                        <div class="carrusel">
+                            <div v-for="(foto, index) in mascota.fotos">
+                                <img :src="foto.contenidoBase64" height="220" width="260" v-show="indices[counter] == index" class="imagen-carousel">
+                            </div>
+                        </div>
+
+                        <a v-on:click="siguienteFoto(counter, mascota.fotos)" class="arrow"><img src="../static/Seleccionar_Mascota/img/right-arrow.png" width="50"/></a>
+
+                    </div>
+
+                    <div class="informacion-mascota texto-mascota">
+                        <p>{{mascota.tipo}}</p>
+                        <p>{{mascota.sexo}}</p>
+                        <p>{{mascota.edad}} Años</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button class="botonAzul"><a class="seleccionar" v-bind:href="'Completar_Preguntas.html?id=' + mascota.id">Seleccionar</a></button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="contenedor-nueva-mascota">
+
+            <h3 class="sub-titulo centrado">¿Deseas dar en adopción una nueva mascota?</h3>
+
+            <div class="boton">
+                <input @click="redirect" class="botonAzul boton" type="button" value="Nueva Mascota">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<main-footer></main-footer>
+
+<script src="../static/Footer/Footer.js"></script>
+<script src="../static/Menu/Menu.js"></script>
+<script src="../static/Resources/ValidarUsuario.js"></script>
+<script src="../static/Seleccionar_Mascota/Seleccionar_Mascota.js"></script>
+
+</body>
+</html>

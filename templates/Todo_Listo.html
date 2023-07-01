@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>¡Todo Listo!</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../static/Menu/Menu.css">
+	<link rel="stylesheet" href="../static/Resources/Letras.css">
+	<link rel="stylesheet" href="../static/Todo_Listo/Todo_Listo.css">
+	<link rel="stylesheet" href="../static/Footer/Footer.css">
+	<link rel="stylesheet" href="../static/Resources/normalize.css">
+	<link rel="stylesheet" href="../static/Resources/Boton.css">
+	<link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+
+<body>
+
+<main-menu-usuario></main-menu-usuario>
+
+<section class="main">
+	<div class="contenedor-base" id="app">
+		<br><br><br><br><br><br>
+		<h3 class="sub-titulo">¡Todo Listo!</h3>
+
+		<div class="contenedor-descripcion">
+			<div class="img-instructiva">
+				<img src="../static/Todo_Listo/img/thumbs_up.png" width="100" alt="Ok">
+			</div>
+			<div class="instruccion texto-simple">
+				<p>Estos son los datos de la mascota y los medios por los cuales te contactaremos.</p>
+			</div>
+		</div>
+
+
+		<div class="contenedor-mascota">
+
+			<h3 class="sub-titulo centrado">Mascota a dar en adopción</h3>
+
+			<div class="contenedor-datos-mascota">
+
+				<div class="informacion-mascota">
+					<p class="nombre-mascota texto-mascota">{{mascota.apodo}}</p>
+				</div>
+
+				<div class="carrousel-fotos-mascota" class="informacion-mascota">
+
+					<a v-on:click="anteriorFoto(mascota.fotos)" class="arrow"><img src="../static/Todo_Listo/img/left-arrow.png" width="50"/></a>
+
+					<div class="carrusel">
+						<div v-for="(foto, index) in this.mascota.fotos">
+							<img :src="foto.contenidoBase64" height="220" width="260" v-show="indice == index" class="imagen-carousel">
+						</div>
+					</div>
+
+					<a v-on:click="siguienteFoto(mascota.fotos)" class="arrow"><img src="../static/Todo_Listo/img/right-arrow.png" width="50"/></a>
+
+
+
+				</div>
+
+				<div class="informacion-mascota texto-mascota">
+					<p>{{mascota.tipo}}</p>
+					<p>{{mascota.sexo}}</p>
+					<p>{{mascota.edad}} Años</p>
+				</div>
+
+			</div>
+
+
+
+			<div class="contenedor-notificaciones">
+
+				<h3 class="sub-titulo">Medios de notificación: </h3>
+
+				<div v-for="medio in this.medios">
+
+					<div class="notificacion">
+						<a class="texto-simple">{{medio}} -</a>
+						<a v-show="medio == 'Email'" class="texto-simple"> Dirección: {{duenio.email}}</a>
+						<a v-show="medio == 'Whatsapp' || medio == 'Sms'" class="texto-simple"> Teléfono: {{duenio.telefono}}</a>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+		<div class="volverAInicio">
+			<button class="botonAzul"><a class="inicio" v-bind:href="'index.html'">Volver a Inicio</a></button>
+		</div>
+
+
+	</div>
+</section>
+
+<main-footer></main-footer>
+
+<script src="../static/Footer/Footer.js"></script>
+<script src="../static/Menu/Menu.js"></script>
+<script src="../static/Resources/ValidarUsuario.js"></script>
+<script src="../static/Todo_Listo/Todo_Listo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+.titulo-principal {
+ color: #FFFFFF;
+ font-style: normal;
+ font-weight: normal;
+ font-size: 55px;
+ text-align: right;
+}
+
+.sub-titulo {
+    color: #C04335;
+    margin-bottom: 40px;
+}
+
+.texto-simple {
+    color: #331A00;
+}
+
+/* HEADER */
+
+header {
+  background: url("img/header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 550px;
+}
+
+header .contenedor-texto-header {
+  width: 50%;
+  text-align: left;
+  float: right;
+  text-align: center;
+  margin-top: 150px;
+}
+
+/* MAIN */
+
+.main {
+    padding: 40px 0 100px 0;
+    text-align: center;
+}
+
+.boton {
+    margin-top: 60px;
+}
+
+.contenedor-instruccion {
+     background-color: #f2f2f2;
+     border-radius: 25px;
+     margin: 40px auto;
+     padding: 20px 60px;
+     display: flex;
+     align-items: center;
+}
+.imagenes-instructivas {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.imagenes-instructivas img {
+      border-radius: 50%;
+      border: 7px solid rgba(26, 163, 255, 0.2);
+      width: 150px;
+      height: 150px;
+}
+
+.instruccion {
+    padding-left: 40px;
+}

@@ -1,0 +1,64 @@
+.contenedor-base {
+  	width: 100%;
+  	max-width: 1000px;
+  	margin: auto;
+  	overflow: hidden;
+}
+
+.main {
+    padding: 40px 0 100px 0;
+    justify-content: center;
+    height: 700px;
+}
+
+/* DESCRIPCION */
+
+.contenedor-descripcion {
+	display: flex;
+	margin: auto;
+	align-items: center;
+}
+
+.texto-informacion {
+	padding-left: 15px;
+}
+
+/* MENSAJE */
+
+.publicacion {
+	width: 100%;
+}
+
+.publicacion .contenedor-informacion {
+	text-align: center;
+}
+
+.texto-detalles {
+	margin-bottom: 30px;
+}
+
+.input {
+	margin-bottom: 10px;
+}
+
+.completo {
+	text-overflow: ellipsis;
+}
+
+.tipo {
+	margin-right: 92px;
+}
+
+.caracteristica {
+	margin-right: 20px;
+}
+
+.comodidad {
+	margin-right: 25px;
+}
+
+/* BOTON FINAL */
+
+.botonBorrar {
+	text-align: center;
+}

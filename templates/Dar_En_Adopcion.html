@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dar En Adopción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Dar_En_Adopcion/Dar_En_Adopcion.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+<header>
+    <main-menu-usuario></main-menu-usuario>
+    <div class="contenedor-base">
+        <div class="contenedor-texto-header">
+            <h1 class="titulo-principal">Dar en Adopción una Mascota</h1>
+        </div>
+    </div>
+</header>
+
+<section class="main" id="app">
+
+    <div class="contenedor-base">
+
+        <div class="texto">
+            <h3 class="sub-titulo">¿Cómo Doy en Adopción a Mi Mascota?</h3>
+            <p class="texto-simple">Dar en adopción una mascota es muy sencillo. Antes de comenzar, lee atentamente los siguientes pasos.</p>
+        </div>
+
+        <div class="imagenes-instructivas">
+
+            <div class="contenedor-instruccion">
+                <div class="img-instructiva">
+                    <img src="../static/Dar_En_Adopcion/img/form.jpg" width="150" alt="Lupa">
+                </div>
+                <div class="instruccion texto-simple">
+                    <p>Primero deberás seleccionar alguna de tus mascotas registradas en la plataforma, o registrar una nueva, para empezar el proceso de darla en adopción.</p>
+                </div>
+            </div>
+
+            <div class="contenedor-instruccion">
+                <div class="img-instructiva">
+                    <img src="../static/Dar_En_Adopcion/img/preguntas.jpg" width="150" alt="Match">
+                </div>
+                <div class="instruccion texto-simple">
+                    <p>Luego tendrás que responder una serie de preguntas, con información que servirá para poder otorgarle a tu mascota el mejor nuevo hogar posible.</p>
+                </div>
+            </div>
+
+            <div class="contenedor-instruccion">
+                <div class="img-instructiva">
+                    <img src="../static/Dar_En_Adopcion/img/bell.jpg" width="150" alt="Form">
+                </div>
+                <div class="instruccion texto-simple">
+                    <p>Cuando aparezca algúna persona interesada en tu mascota, se te notificará para que puedas comunicarte con ella y finalizar la adopción.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button @click="redirect" class="botonAzul boton" v-show="!unlocked">Comenzar</button>
+
+        <div class="aviso-usuario contenedor-base" v-show="unlocked">
+            <div class="contenedor-error">
+                <img src="../static/Registrar_Mascota/img/usuario.png" alt="usuario" width="100">
+                <h3 class="sub-titulo">Parece que no tienes usuario</h3>
+                <p class="texto-simple">Hemos notado que aún no has iniciado sesión o no te has registrado. Para poder dar en adopción a alguna de tus mascotas debes tener un usuario.</p>
+                <div class="botones">
+                    <button @click="goToRegistrarse" class="botonAzul">Registrarme</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<main-footer></main-footer>
+
+<script src="../static/Footer/Footer.js"></script>
+<script src="../static/Menu/Menu.js"></script>
+<script src="../static/Resources/ValidarUsuario.js"></script>
+<script src="../static/Dar_En_Adopcion/Dar_En_Adopcion.js"></script>
+
+</body>
+</html>

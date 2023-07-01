@@ -1,0 +1,30 @@
+.contenedor-edad {
+	display: flex;
+	align-items: middle;
+}
+
+.campo-numero {
+	width: 50px;
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid #C1C0C5;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tarjeta-error {
+	border-radius: 15px;
+	border: 2px solid red;
+	padding: 50px;
+	margin-bottom: 30px;
+}
+
+.tarjeta-error img {
+    float: right;
+    margin: auto 0;
+}
+
+.tarjeta-error .texto-simple {
+    color: red;
+}

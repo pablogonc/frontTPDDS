@@ -1,0 +1,88 @@
+.sub-titulo {
+    color: #C04335;
+    margin-bottom: 40px;
+}
+
+.texto-simple {
+    color: #331A00;
+}
+
+.texto {
+    width: 83%;
+    margin: 0px auto;
+}
+
+/* Agrego contenedor base aca */
+
+.contenedor-base {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* HEADER */
+
+header {
+  background: url("img/header3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 550px;
+}
+
+header .contenedor-texto-header {
+  width: 30%;
+  float: right;
+  margin-top: 180px;
+}
+
+header .contenedor-texto-header .titulo-principal {
+  color: #331A00;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 55px;
+  text-align: right;
+  margin: 0;
+}
+
+/* MAIN - ACERCA DE */
+
+.main {
+  text-align: center;
+}
+
+.main .acerca-de .contenedor-base {
+    padding: 40px 0 100px 0;
+}
+
+.main .texto-simple {
+    margin-bottom: 40px;
+}
+
+.main .imagenes-instructivas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 141px;
+}
+
+.main .imagenes-instructivas img {
+      border-radius: 50%;
+      border: 7px solid rgba(26, 163, 255, 0.2);
+      width: 150px;
+      height: 150px;
+}
+
+.boton {
+    margin-bottom: 100px;
+}
+
+.contenedor-error {
+    max-width: 60%;
+    margin: auto;
+    border-radius: 15px;
+    border: 3px solid black;
+    margin-bottom: 100px;
+    padding: 10px;
+}

@@ -1,0 +1,34 @@
+header {
+    background: url("img/header.png");
+    height: 550px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.crear {
+    margin: 0 auto;
+    align-content: center;
+}
+
+.boton {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.contenedor-texto-header {
+  margin-top: 170px;
+  max-width: 40%;
+  float: right;
+}
+
+.titulo-principal {
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 55px;
+  margin: 0;
+  text-align: right;
+}

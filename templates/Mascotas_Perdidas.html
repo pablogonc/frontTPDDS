@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mascotas Perdidas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Resources/Filtro.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <link rel="stylesheet" href="../static/Resources/Publicaciones.css">
+    <link rel="stylesheet" href="../static/Mascotas_Perdidas/Mascotas_Perdidas.css">
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+    <header>
+        <main-menu-usuario></main-menu-usuario>
+        <div class="contenedor-base">
+            <div class="contenedor-texto-header">
+                <h1 class="titulo-principal">Encontrá a Tu Mascota</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="main" id="app">
+
+        <!-- ACERCA - DE -->
+
+        <section class="acerca-de">
+            <div class="contenedor-base">
+
+            <h3 class="sub-titulo">¿Tu Mascota Está Perdida?</h3>
+            <p class="texto-simple">En esta sección encontrarás publicaciones con mascotas que han sido encontradas sin su dueño. Si tu mascota se ha perdido y no tenía collar, puedes buscarla aquí. Si encuentras a tu mascota en las publicaciones, clickea en ella y ponte en contacto con su rescatista.</p>
+
+            </div>
+        </section>
+
+        <!-- PUBLICACIONES RECIENTES -->
+
+        <section class="recientes">
+            <div class="contenedor-base">
+
+                <p class="sub-titulo">Publicaciones Recientes</p>
+
+                <div class="fotos">
+                    <a  :href="'Publicacion_Mascota_Perdida.html?publicacion=' + publicacion.id"  v-for="publicacion in recientes" class="foto">
+                        <div class="square-box">
+                            <img class="square-content" v-bind:src="publicacion.mascota.fotos[0].contenidoBase64" :alt="publicacion.mascota.apodo">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TODAS LAS PUBLICACIONES -->
+
+        <section class="todas-publicaciones">
+
+            <!-- FILTROS -->
+
+            <section class="filtro">
+                <div class="contenedor-base">
+                    <div class="contenedor-opciones">
+
+                        <p class="sub-titulo">Todas las Publicaciones</p>
+
+                        <div class="dropdownOrdenar">
+                            <button class="dropbtn" @click="orderByName">
+                                <p class="texto-boton">Ordenar</p>
+                                <img src="../static/Buscar_Hogar/img/ordenar.png" alt="Ordenar">
+                            </button>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <p class="texto-boton">Filtrar</p>
+                                <img src="../static/Buscar_Hogar/img/filtro.png" alt="Filtrar">
+                            </button>
+                            <div class="dropdown-content">
+                                <div class="seccion-filtro">
+
+                                    <div class="titulo-check">
+                                        <label>Especie</label>
+                                    </div>
+
+                                    <div class="opciones-check">
+                                        <input type="checkbox" id="GATO" name="gato" value="GATO"  v-model="check">
+                                        <label class="texto-simple">Gato</label>
+
+                                        <input type="checkbox" id="PERRO" name="perro" value="PERRO"  v-model="check">
+                                        <label class="texto-simple">Perro</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="reset-filtros">
+                                    <div class="texto-borrar">
+                                        <input class="boton-filtro" type="submit" @click="reset" value="Borrar Filtros" style="color: #B93122;">
+                                    </div>
+                                    <div class="texto-fin">
+                                        <input class="boton-filtro" type="submit" @click="cancelar" value="Cancelar" style="color:#57565B">
+                                    </div>
+                                    <div class="texto-fin">
+                                        <input class="boton-filtro" type="submit" value="Aceptar" @click="filtrar" style="color:#1DA1F2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PUBLICACIONES -->
+
+            <section class="publicaciones">
+                <div class="contenedor-grande">
+                    <div th:action="@{/cargar-mas}" method="get" class="fotos">
+                        <a :href="'Publicacion_Mascota_Perdida.html?publicacion=' + publicacion.id"  class="foto" v-for="publicacion in publicacionesMacotas">
+                            <div class="square-box">
+                                <img class="square-content" v-bind:src="publicacion.mascota.fotos[0].contenidoBase64" :alt="publicacion.mascota.apodo">
+                            </div>
+
+                            <p class="texto-simple">{{publicacion.mascota.ubicacion.direccion}}</p>
+                        </a>
+                    </div>
+                    <p @click="agregar" class="boton-mas">Cargar mas</p>
+
+                </div>
+            </section>
+        </section>
+    </section>
+
+<main-footer></main-footer>
+
+    <script src="../static/Footer/Footer.js"></script>
+    <script src="../static/Menu/Menu.js"></script>
+    <script src="../static/Resources/ValidarUsuario.js"></script>
+    <script src="../static/Mascotas_Perdidas/Mascotas_Perdidas.js"></script>
+
+</body>
+</html>

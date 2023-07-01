@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Organizaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Organizaciones/Organizaciones.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+    <main-menu-usuario></main-menu-usuario>
+
+    <header>
+        <div class="contenedor-base">
+            <div class="contenedor-texto-header">
+                <div class="texto">
+                    <h1 class="titulo-principal">Conoce a nuestras organizaciones</h1>
+                    <h2 class="descripcion-sistema">Nuestro sistema está integrado por varias asociaciones sin fines de lucro que buscan rescatar mascotas y encontrar familias responsables para su adopción</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main" id="app">
+        <div class="contenedor-grande">
+            <div class="contenedor-organizaciones">
+                <div v-for="organizacion in organizaciones">
+                    <div class="contenedor-organizacion">
+                        <p class="sub-titulo">{{organizacion.nombre}}</p><br>
+                        <p class="texto-simple">Dirección: {{organizacion.ubicacion.direccion}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<main-footer></main-footer>
+    <script src="../static/Menu/Menu.js"></script>
+    <script src="../static/Footer/Footer.js"></script>
+    <script src="../static/Organizaciones/Organizaciones.js"></script>
+    <script src="../static/Resources/ValidarUsuario.js"></script>
+
+</body>
+</html>

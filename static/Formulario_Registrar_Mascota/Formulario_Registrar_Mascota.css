@@ -1,0 +1,154 @@
+/* Hide arrows in number type submit */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Same but for Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* MAIN - DATOS PERSONALES */
+
+h3 {
+    border-bottom: 1px solid #C1C0C5;
+    padding-bottom: 20px;
+    color: #1AA3FF;
+    margin-top: 80px;
+}
+
+.input {
+    margin-bottom: 10px;
+    width: 40%;
+    margin-right: 30px;
+}
+
+.misma-linea {
+    display: inline-block;
+}
+
+.input-completo {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #C1C0C5;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.input-chico {
+    margin-bottom: 10px;
+    width: 25%;
+    margin-right: 30px;
+}
+
+textarea {
+    width: 82%;
+    height: 150px;
+    border: 1px solid #C1C0C5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.sub-titulo {
+    margin-bottom: 50px;
+}
+
+.pregunta {
+    margin-bottom: 10px;
+}
+
+/* VENTANA PARA AGREGAR NUEVO */
+
+.nuevo-cuadro {
+    padding: 20px;
+    border: solid 1px #C1C0C5;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.nuevo-cuadro:hover {
+    border: 1px dashed #C1C0C5;
+    border-radius: 10px;
+}
+
+span {
+    cursor: pointer;
+    display: inline-block;
+    color: #57565B;
+    float: right;
+}
+
+/* CENTRADO DE BOTONES */
+
+.boton {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.gris {
+    display: block;
+    margin-bottom: 50px;
+}
+
+/* Para que las opciones esten en la misma linea que su titulo */
+.opciones-inline {
+    margin-left: 30px;
+    display: inline-block;
+}
+
+.titulo-inline {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.fecha {
+    height: 40px;
+    border: 1px solid #C1C0C5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0 20px 0 10px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.fecha-inline {
+    display: inline-block;
+}
+
+.tipoDoc {
+    border: 1px solid #C1C0C5;
+    border-radius: 5px;
+    padding: 10px 0 10px 10px;
+    margin-left: 38px;
+}
+
+.contacto-numero {
+    color: #1AA3FF;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* ERRORES */
+
+.tarjeta-error {
+	border-radius: 15px;
+	border: 2px solid red;
+	padding: 50px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.tarjeta-error img {
+    float: right;
+    margin: auto 0;
+}
+
+.tarjeta-error .texto-simple {
+    color: red;
+}

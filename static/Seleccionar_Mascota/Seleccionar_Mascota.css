@@ -1,0 +1,61 @@
+.contenedor-descripcion {
+	display: flex;
+	align-items: center;
+}
+
+.instruccion {
+	padding-left: 30px;
+}
+
+/* SOBRE EL DIV QUE CONTIENE TODAS LAS MASCOTAS */
+
+.contenedor-mascotas {
+	padding-top: 5%;
+	padding-left: 130px;
+}
+
+/* SOBRE EL DIV GENERAL DE LA MASCOTA */
+
+.contenedor-mascota {
+	display: flex;
+	align-items: center;
+	padding-bottom: 2%;
+
+}
+
+/* SOBRE EL DIV QUE TIENE LOS DATOS PERO NO INCLUYE EL BOTON */
+
+.contenedor-datos-mascota{
+	border-radius: 5%;
+	background: #F2F2F2;
+	padding: 1% 7% 1% 7%;
+	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+   	width: 100%;
+   	margin-right: 4%;
+}
+
+.carrousel-fotos-mascota {
+	display: flex;
+	align-items: center;
+}
+
+.imagen-carousel {
+	border-radius: 5%;
+}
+
+.arrow:hover {
+	cursor: pointer;
+}
+
+.seleccionar {
+	color: white;
+}
+
+/* NUEVA MASCOTA */
+
+.centrado {
+	text-align: center;
+	margin-top: 10%;
+}

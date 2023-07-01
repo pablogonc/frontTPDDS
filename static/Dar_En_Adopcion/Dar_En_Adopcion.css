@@ -1,0 +1,91 @@
+.sub-titulo {
+    color: #C04335;
+    margin-bottom: 40px;
+}
+
+.texto-simple {
+    color: #331A00;
+}
+
+/* Agrego contenedor base aca */
+
+.contenedor-base {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* HEADER */
+
+header {
+    background: url("img/header.png");
+    height: 550px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+header .contenedor-texto-header {
+  width: 40%;
+  margin-top: 120px;
+  text-align: left;
+}
+
+ .titulo-principal {
+  color: #f2f2f2;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 55px;
+}
+
+/* MAIN */
+
+.main {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.boton {
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+
+.contenedor-instruccion {
+     background-color: #f2f2f2;
+     border-radius: 25px;
+     margin: 40px auto;
+     padding: 20px 60px;
+     display: flex;
+     align-items: center;
+}
+.imagenes-instructivas {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.imagenes-instructivas img {
+      border-radius: 50%;
+      border: 7px solid rgba(26, 163, 255, 0.2);
+      width: 150px;
+      height: 150px;
+}
+
+.instruccion {
+    padding-left: 40px;
+}
+
+/* ERROR */
+
+.contenedor-error {
+    max-width: 60%;
+    margin: auto;
+    border-radius: 15px;
+    border: 3px solid black;
+    margin-bottom: 100px;
+    padding: 10px;
+}
+
+.main .texto-simple {
+    margin-bottom: 40px;
+}

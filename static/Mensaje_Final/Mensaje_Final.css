@@ -1,0 +1,45 @@
+.contenedor-base {
+  	width: 100%;
+  	max-width: 1000px;
+  	margin: auto;
+  	overflow: hidden;
+}
+
+.main {
+    padding: 40px 0 100px 0;
+    justify-content: center;
+    height: 700px;
+}
+
+/* DESCRIPCION */
+
+.contenedor-descripcion {
+	display: flex;
+	margin: auto;
+	align-items: center;
+}
+
+.contenedor-descripcion .img-informacion {
+	border-radius: 50%;
+    border: 7px solid rgba(26, 163, 255, 0.2);
+}
+
+.texto-informacion {
+	padding-left: 15px;
+}
+
+/* MENSAJE */
+
+.mensaje {
+	width: 100%;
+}
+
+.mensaje .contenedor-informacion {
+	text-align: justify;
+}
+
+/* BOTON FINAL */
+
+.boton {
+	margin-left: 40%;
+}

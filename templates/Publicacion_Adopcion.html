@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publicación de adopción</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/Resources/Letras.css">
+    <link rel="stylesheet" href="../static/Resources/Boton.css">
+    <link rel="stylesheet" href="../static/Resources/normalize.css">
+    <link rel="stylesheet" href="../static/Footer/Footer.css">
+    <link rel="stylesheet" href="../static/Menu/Menu.css">
+    <link rel="stylesheet" href="../static/Resources/Publicaciones.css">
+    <link rel="stylesheet" href="../static/Publicacion_Adopcion/Publicacion_Adopcion.css">
+    <link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="../static/carrusel/carrusel.css">
+
+
+
+</head>
+<body>
+    <main-menu-usuario></main-menu-usuario>
+
+    <section class="main" id="publicacionAdopcion">
+        <div class="titulo">
+            <p>¡Conoce a {{publicacion.mascota.apodo}}!  </p>
+        </div>
+
+        <!--  CARRUSEL-->
+
+        <div class="contenedor-carrusel">
+
+            <div class="carousel center-align">
+                <template  v-for="foto in fotos">
+                    <div class="carousel-item">
+                        <img v-bind:src=" foto.contenidoBase64" class="image-slide" alt="...">
+                    </div>
+                </template >
+            </div>
+
+        </div>
+
+        <!--  CARRUSEL-->
+
+        <div class="info-mascota">
+            <div class="renglon">
+                <p class="palabra-start">Nombre</p>
+                <p class="guion">-</p>
+                <p class="palabra-end">{{publicacion.mascota.nombre}}</p>
+            </div>
+            <div class="renglon">
+                <p class="palabra-start">Tipo</p>
+                <p class="guion">-</p>
+                <p class="palabra-end">{{publicacion.mascota.tipo}}</p>
+            </div>
+            <div class="renglon">
+                <p class="palabra-start">Sexo</p>
+                <p class="guion">-</p>
+                <p class="palabra-end">{{publicacion.mascota.sexo}}</p>
+            </div>
+            <div class="renglon">
+                <p class="palabra-start">Edad</p>
+                <p class="guion">-</p>
+                <p class="palabra-end">{{publicacion.mascota.edad}} años</p>
+            </div>
+            <div class="renglon">
+                <p class="palabra-start">Caracteristicas</p>
+                <p class="guion">-</p>
+                <p class="palabra-end">
+                    <template   v-for="(caracteristica, index) in publicacion.mascota.caracteristicas">
+                        {{caracteristica.caracteristica}}
+                        <template  v-if="index < (publicacion.mascota.caracteristicas.length-1)"> - </template >
+                    </template >
+
+            </div>
+        </div>
+
+        <div class="contenedor-botones" id="adoptar">
+            <input class="botonVolver boton " type="button" onclick="window.location.href='Publicaciones_Adopcion.html'" value="Volver">
+
+
+            <input class="botonAzul boton" type="button"  @click="adoptar" value="Adoptar">
+
+        </div>
+
+        <div class="aviso-usuario contenedor-base" v-show="unlocked">
+            <div class="contenedor-error">
+                <img class="img" src="../static/Publicacion_Adopcion/img/usuario.png" alt="usuario" width="100">
+                <h3 class="sub-titulo">Parece que no tienes usuario</h3>
+                <p class="texto-simple">Hemos notado que aún no has iniciado sesión o no te has registrado. Por favor hazlo y luego vuelve a intentarlo.</p>
+                <div class="botones">
+                    <button @click="goToRegistrarse" class="botonGris">Registrarme</button>
+                    <button @click="gotoIniciarSesion" class="botonAzul">Iniciar Sesión</button>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="solicitudIniciada" class="contenedor-estado">
+            <p :style="'color:'+ colorText ">{{estado_Solicitud}} </p>
+        </div>
+
+    </section>
+    <main-footer></main-footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../static/carrusel/carrusel.js"></script>
+    <script src="../static/Footer/Footer.js"></script>
+    <script src="../static/Menu/Menu.js"></script>
+    <script src="../static/Resources/ValidarUsuario.js"></script>
+    <script src="../static/Publicacion_Adopcion/Publicacion_Adopcion.js"></script>
+
+
+</body>
+
+</html>

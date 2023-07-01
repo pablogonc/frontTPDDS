@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Crear Publicación</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../static/Resources/Letras.css">
+	<link rel="stylesheet" href="../static/Crear_Publicacion/Crear_Publicacion.css">
+	<link rel="stylesheet" href="../static/Resources/normalize.css">
+	<link rel="stylesheet" href="../static/Resources/Boton.css">
+	<link rel="stylesheet" href="../static/Footer/Footer.css">
+	<link rel="stylesheet" href="../static/Menu/Menu.css">
+	<link rel="stylesheet" href="../static/Resources/Formulario.css">
+	<link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+
+<body>
+
+<main-menu-usuario></main-menu-usuario>
+
+<section class="main">
+
+	<div class="contenedor-base" id="app">
+		<br><br><br>
+		<h3 class="sub-titulo">Creando Publicación</h3>
+
+		<section class="datos">
+
+				<div v-if="errors.length">
+					<div class="tarjeta-error">
+						<img src="../static/Crear_Publicacion/img/error.png" alt="Error" height="100">
+						<b class="texto-error">¡Atención! Tienes datos incorrectos:</b>
+						<br>
+						<br>
+						<ul>
+							<li v-for="error in errors" class="texto-simple">{{ error }}</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="input">
+					<p class="texto-simple pregunta">Email</p>
+					<input type="email" v-model="form.emailDelInteresado" class="input-completo texto-simple" required>
+				</div>
+
+				<div class="input">
+					<p class="texto-simple pregunta titulo-inline">Tipo</p>
+					<div class="opciones-inline">
+						<input type="radio" id="Gato" name="tipo"  value="GATO" v-model="form.preferencias.tipoMascota">
+						<label for="Gato" class="texto-simple option">Gato</label><br>
+						<input type="radio" id="Perro" name="tipo" value="PERRO" v-model="form.preferencias.tipoMascota">
+						<label for="Perro" class="texto-simple option">Perro</label><br>
+						<input type="radio" id="Cualquiera" name="tipo" value="CUALQUIERA" v-model="form.preferencias.tipoMascota">
+						<label for="Cualquiera" class="texto-simple option">Cualquiera</label><br>
+					</div>
+				</div>
+
+				<div class="input">
+					<p class="texto-simple pregunta titulo-inline">Sexo</p>
+					<div class="opciones-inline">
+						<input type="radio" id="Hembra" name="sexo"  value="HEMBRA" v-model="form.preferencias.sexo">
+						<label for="Hembra" class="texto-simple option">Hembra</label><br>
+						<input type="radio" id="Macho" name="sexo"  value="MACHO" v-model="form.preferencias.sexo">
+						<label for="Macho" class="texto-simple option">Macho</label><br>
+						<input type="radio" id="Cualquier-Sexo" name="sexo" value="CUALQUIERA" v-model="form.preferencias.sexo">
+						<label for="Cualquier-Sexo" class="texto-simple option">Cualquiera</label><br>
+					</div>
+				</div>
+
+				<div class="input">
+					<p class="texto-simple pregunta titulo-inline">Edad</p>
+					<div class="opciones-inline">
+						<div class="contenedor-edad">
+							<p class="texto-simple"><input type="radio" id="entre" name="edad" v-on:change="habilitar">  Entre</p>
+							<input disabled type="number" id="edadMin" name="edadMin" class="campo-numero" min="0" max="99" v-model="form.preferencias.edadMin">
+							<p class="texto-simple">y</p>
+							<input disabled type="number" id="edadMax" name="edadMax" class="campo-numero" min="1" max="99" v-model="form.preferencias.edadMax">
+						</div>
+						<p class="texto-simple"><input type="radio" id="cualquier-Edad" name="edad" v-on:change="deshabilitar">  Cualquiera</p>
+					</div>
+				</div>
+
+				<div class="input-check">
+					<p class="texto-simple pregunta titulo-inline">Caracteristicas</p>
+					<div class="opciones-inline">
+						<div v-for="caracteristica in caracteristicas2">
+							<p class="texto-simple"><input type="checkbox" id="caracteristicaNombre" v-model="form.preferencias.caracteristicas" v-bind:value="caracteristica">  {{caracteristica.caracteristica}}</p>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="input-check">
+					<p class="texto-simple pregunta titulo-inline">Comodidades</p>
+					<div class="opciones-inline">
+						<div v-for="comodidad in comodidades2">
+							<p class="texto-simple"><input type="checkbox" id="comodidadNombre" v-model="form.preferencias.comodidades" v-bind:value="comodidad">  {{comodidad.comodidad}}</p>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<input class="botonAzul boton" type="submit" @click="enviar" value="Enviar">
+
+		</section>
+
+	</div>
+
+</section>
+
+<main-footer></main-footer>
+
+<script src="../static/Footer/Footer.js"></script>
+<script src="../static/Menu/Menu.js"></script>
+<script src="../static/Crear_Publicacion/Crear_Publicacion.js"></script>
+<script src="../static/Resources/ValidarUsuario.js"></script>
+
+</body>
+</html>

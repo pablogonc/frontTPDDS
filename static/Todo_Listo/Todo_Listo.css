@@ -1,0 +1,69 @@
+.contenedor-descripcion {
+	margin-top: 2%;
+	display: flex;
+	align-items: center;
+}
+
+.instruccion {
+	padding-left: 30px;
+}
+
+.centrado {
+	text-align: center;
+}
+
+/* SOBRE EL DIV GENERAL DE LA MASCOTA */
+
+.contenedor-mascota {
+	align-items: center;
+	padding-bottom: 2%;
+}
+
+/* SOBRE EL DIV QUE TIENE LOS DATOS PERO NO INCLUYE EL BOTON */
+
+.contenedor-datos-mascota{
+	margin-left: 130px;
+	margin-top: 2%;
+	border-radius: 5%;
+	background: #F2F2F2;
+	padding: 1% 7% 1% 7%;
+	display: flex;
+	justify-content: space-between;
+  	align-items: center;
+  	width: 75%;
+}
+
+.carrousel-fotos-mascota {
+	display: flex;
+	align-items: center;
+}
+
+.imagen-carousel {
+	border-radius: 5%;
+}
+
+.arrow:hover {
+	cursor: pointer;
+}
+
+/* MEDIOS DE NOTIFICACION */
+
+.contenedor-notificaciones {
+	margin-top: 2%;
+	margin-left: 130px;
+}
+
+.volverAInicio {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	text-align: center;
+}
+
+.notificacion {
+	margin-top: 2%;
+	display: flex;
+}
+
+.inicio {
+	color: white;
+}

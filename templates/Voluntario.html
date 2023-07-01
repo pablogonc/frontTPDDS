@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Voluntario</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../static/Menu/Menu.css">
+	<link rel="stylesheet" href="../static/Resources/Letras.css">
+	<link rel="stylesheet" href="../static/Voluntario/Voluntario.css">
+	<link rel="stylesheet" href="../static/Footer/Footer.css">
+	<link rel="stylesheet" href="../static/Resources/normalize.css">
+	<link rel="stylesheet" href="../static/Resources/Boton.css">
+	<link rel="stylesheet" href="../static/Resources/Formulario.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="icon" href="../static/Resources/img/logo.png" type="image/icon type">
+</head>
+
+<body>
+
+
+<main-menu-voluntario></main-menu-voluntario>
+
+
+
+<section class="main">
+	<div class="contenedor-base" id="app">
+
+		<br><br><br>
+		<h3 class="sub-titulo titulo">Publicaciones pendientes</h3>
+
+		<div class="sin-publicaciones" v-if="todasAceptadas()">
+			<a class="texto-sin-publicaciones">¡Buen trabajo! No hay más publicaciones para evaluar en este momento. </a>
+		</div>
+
+		<div class="contenedor-publicaciones">
+
+
+			<div v-for="publicacion in this.voluntario.organizacion.publicacionesMascotasEncontradas" v-show="!publicacion.aceptada">
+
+				<div class="tarjeta">
+
+					<div class="interior-tarjeta">
+						<div class="flip-card-front box">
+
+							<p class="card-title">{{publicacion.mascota.tipo}}</p>
+
+							<div class="texto-img">
+
+								<div class="texto">
+
+									<p class="texto-simple">Encontrada en: {{publicacion.mascota.ubicacion.direccion}}</p>
+									<br>
+									<p class="texto-simple">Encontrada por: {{publicacion.mascota.rescatista.nombre}} {{publicacion.mascota.rescatista.apellido}}     | {{publicacion.mascota.rescatista.tipoDocumento}}: {{publicacion.mascota.rescatista.nroDocumento}} | Teléfono: {{publicacion.mascota.rescatista.telefono}}</p>
+									<br>
+									<p class="texto-simple">Estado: {{publicacion.mascota.estado}}</p>
+
+								</div>
+
+								<div class="img">
+
+									<img class="imagen" :src="publicacion.mascota.fotos[0].contenidoBase64" alt="No hay foto">
+
+								</div>
+								<br>
+								<br>
+							</div>
+
+
+
+							<div class="note botones">
+
+								<a class="botones" @click="aceptar(publicacion)">
+									<button class="botonAzul">Aceptar</button>
+								</a>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+	</div>
+	</div>
+</section>
+
+<main-footer></main-footer>
+
+<script src="../static/Footer/Footer.js"></script>
+<script src="../static/Menu/Menu.js"></script>
+<script src="../static/Voluntario/Voluntario.js"></script>
+<script src="../static/Resources/ValidarUsuario.js"></script>
+
+</body>
+</html>
